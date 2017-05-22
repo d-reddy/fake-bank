@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		div.container {
+			display: flex;
+			justify-content: space-around;
+		}
+		img {
+			width: 100%;
+			height:100%;
+		}
+		header {
+			display: flex;
+			justify-content: center;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Bank Transfer</h1>
+		</header>
+		<div class="container">
+			<span>
+				<label>Take Money From:</label>
+				<select id="fromperson" name="fromperson">
+				  <option value="1">son</option>
+				  <option value="2">parents</option>
+				</select>
+				<input id="swipe" type="button" value="Take $10">
+			</span>
+
+			<span>
+				<label>Give Money To:</label>
+				<select id="toperson" name="toperson">
+				  <option value="1">son</option>
+				  <option value="2">parents</option>
+				</select>
+			</span>
+		</div>
+		
+		<br/>
+		
+		<div class="container">
+			<span>
+				<label>Amount:</label>
+				<input id="sonamount" type="text" value="11000" style="border: 0px;">
+			</span>
+
+			<span>
+				<label>Amount:</label>
+				<input id="parentamount" type="text" value="50000" style="border: 0px;">
+			</span>
+		</div>
+
+		<img src="service.svg" />
+	</body>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+		$( "#swipe" ).click(function() {
+			var fromwho = $("#fromperson").val();
+			
+			var towho = $("#toperson").val();
+			
+			if(fromwho == towho) return;
+			
+			if (fromwho == 1){
+				var parentvalue = $("#parentamount").val();
+				var sonvalue = $("#sonamount").val();
+				
+				parentvalue = parseInt(parentvalue)+10;
+				$("#parentamount").val(parentvalue)
+				
+				sonvalue = parseInt(sonvalue)-10;
+				$("#sonamount").val(sonvalue)
+			}else{
+				var parentvalue = $("#parentamount").val();
+				var sonvalue = $("#sonamount").val();
+				
+				parentvalue = parseInt(parentvalue)-10;
+				$("#parentamount").val(parentvalue)
+				
+				sonvalue = parseInt(sonvalue)+10;
+				$("#sonamount").val(sonvalue)
+			}
+		});
+
+	</script>
+</html>
